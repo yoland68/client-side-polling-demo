@@ -1,0 +1,24 @@
+<html>
+
+  <head>
+    <script type="text/javascript" charset="utf-8">
+      let VERSION = "";
+      const req = new XMLHttpRequest();
+      req.addEventListener("load", function() {
+        if (VERSION != this.responseText.split(" ")[1]) {
+          document.getElementById("frame").contentWindow.location.reload();
+        }
+        VERSION=this.responseText.split(" ")[1];});
+      function R() {
+        req.open("GET", "actual.html");
+        req.send();
+      }
+      setInterval(R, 100);
+    </script>
+
+  </head>
+<body>
+  <iframe id="frame" width="100%" height="100%" style="border:none;" src="actual.html"/>
+
+</body>
+</html>
